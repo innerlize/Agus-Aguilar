@@ -18,29 +18,13 @@
   margin-right: auto;
 }
 
-.timeline {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px 0;
-}
-
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  transform-origin: top;
+/* Override library line color with gradient */
+.vertical-timeline::before {
   background: linear-gradient(
     to bottom,
     var(--color-pri),
     var(--color-sec)
-  );
-  margin-left: -1.5px;
+  ) !important;
 }
 
 @media (min-width: 1920px) {
@@ -66,15 +50,6 @@
   .work-txt {
     font-size: 55px;
   }
-
-  .timeline {
-    padding-left: 40px;
-  }
-
-  .timeline-line {
-    left: 20px;
-    margin-left: 0;
-  }
 }
 
 @media (max-width: 500px) {
@@ -85,14 +60,6 @@
 
   .work-txt {
     font-size: 32px;
-  }
-
-  .timeline {
-    padding-left: 30px;
-  }
-
-  .timeline-line {
-    left: 12px;
   }
 }
 
@@ -110,13 +77,5 @@
     margin-top: 100px;
     padding: 40px 10px 10px 10px;
     width: 90%;
-  }
-
-  .timeline {
-    padding-left: 25px;
-  }
-
-  .timeline-line {
-    left: 10px;
   }
 }

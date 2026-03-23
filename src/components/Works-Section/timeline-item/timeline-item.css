@@ -1,93 +1,40 @@
-/* Timeline Item */
-.timeline-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  padding: 10px 40px 40px;
-  box-sizing: border-box;
-}
-
-.timeline-item.left {
-  align-self: flex-start;
-  align-items: flex-end;
-}
-
-.timeline-item.right {
-  align-self: flex-end;
-  align-items: flex-start;
-  text-align: left;
-}
-
-/* Dot on the timeline */
-.timeline-dot {
-  position: absolute;
-  top: 18px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 3px solid var(--color-pri);
-  background: rgb(10, 10, 10);
-  z-index: 2;
-}
-
-.timeline-item.left .timeline-dot {
-  right: -8px;
-}
-
-.timeline-item.right .timeline-dot {
-  left: -8px;
-}
-
-/* Period label */
-.timeline-period {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2px;
+/* Date label */
+.timeline-date {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
   text-transform: uppercase;
-  color: var(--color-pri);
-  margin-bottom: 12px;
+  color: var(--color-pri) !important;
 }
 
-/* Card */
-.timeline-card {
-  background: rgba(0, 0, 0, 0.116);
-  backdrop-filter: blur(20px);
-  border-radius: 25px;
-  padding: 25px 30px;
-  width: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.timeline-card {
-  text-align: left;
-}
-
-.timeline-card .card-company {
+/* Card content */
+.card-company {
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 4px;
+  text-align: left;
 }
 
-.timeline-card .card-role {
+.card-role {
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 1px;
   opacity: 0.7;
   margin-bottom: 16px;
+  text-align: left;
 }
 
-.timeline-card .card-description {
+.card-description {
   font-weight: 100;
   font-size: 15px;
   line-height: 1.6;
   margin-bottom: 16px;
   padding-left: 20px;
   list-style: disc;
+  text-align: left;
 }
 
-.timeline-card .card-description li {
+.card-description li {
   margin-bottom: 6px;
 }
 
@@ -96,7 +43,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
 }
 
 .tool-pill {
@@ -111,15 +57,15 @@
 /* ====== Responsive ====== */
 
 @media (min-width: 1920px) {
-  .timeline-card .card-company {
+  .card-company {
     font-size: 30px;
   }
 
-  .timeline-card .card-role {
+  .card-role {
     font-size: 18px;
   }
 
-  .timeline-card .card-description {
+  .card-description {
     font-size: 20px;
   }
 
@@ -129,33 +75,15 @@
 }
 
 @media (max-width: 820px) {
-  .timeline-item {
-    width: 100%;
-    padding: 10px 0 40px 30px;
-  }
-
-  .timeline-item.left,
-  .timeline-item.right {
-    align-self: flex-start;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .timeline-item.left .timeline-dot,
-  .timeline-item.right .timeline-dot {
-    left: -38px;
-    right: auto;
-  }
-
-  .timeline-card .card-company {
+  .card-company {
     font-size: 28px;
   }
 
-  .timeline-card .card-role {
+  .card-role {
     font-size: 18px;
   }
 
-  .timeline-card .card-description {
+  .card-description {
     font-size: 20px;
   }
 
@@ -165,29 +93,15 @@
 }
 
 @media (max-width: 500px) {
-  .timeline-item {
-    padding: 10px 0 30px 25px;
-  }
-
-  .timeline-item.left .timeline-dot,
-  .timeline-item.right .timeline-dot {
-    left: -30px;
-  }
-
-  .timeline-card {
-    padding: 20px;
-    border-radius: 20px;
-  }
-
-  .timeline-card .card-company {
+  .card-company {
     font-size: 20px;
   }
 
-  .timeline-card .card-role {
+  .card-role {
     font-size: 12px;
   }
 
-  .timeline-card .card-description {
+  .card-description {
     font-size: 14px;
   }
 
@@ -196,35 +110,33 @@
     padding: 4px 10px;
   }
 
-  .timeline-period {
-    font-size: 11px;
+  .timeline-date {
+    font-size: 11px !important;
   }
 }
 
 @media (max-width: 375px) {
-  .timeline-item {
-    padding: 8px 0 25px 20px;
-  }
-
-  .timeline-item.left .timeline-dot,
-  .timeline-item.right .timeline-dot {
-    left: -25px;
-  }
-
-  .timeline-dot {
-    width: 12px;
-    height: 12px;
-  }
-
-  .timeline-card {
-    padding: 15px;
-  }
-
-  .timeline-card .card-company {
+  .card-company {
     font-size: 18px;
   }
 
-  .timeline-card .card-description {
+  .card-description {
     font-size: 13px;
+  }
+}
+
+.vertical-timeline-element-icon {
+  width: 30px !important;
+  height: 30px !important;
+  margin-left: -15px !important;  
+  margin-top: 10px !important;
+}
+
+@media (max-width: 1169px) {
+  .vertical-timeline-element-icon {
+  width: 30px !important;
+  height: 30px !important;
+  margin-left: 4px !important;  
+  margin-top: 6px !important;
   }
 }
