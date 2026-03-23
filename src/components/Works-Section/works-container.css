@@ -18,7 +18,6 @@
   margin-right: auto;
 }
 
-/* Override library line color with gradient */
 .vertical-timeline::before {
   background: linear-gradient(
     to bottom,

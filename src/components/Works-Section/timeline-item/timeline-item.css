@@ -1,4 +1,3 @@
-/* Date label */
 .timeline-date {
   font-size: 13px !important;
   font-weight: 600 !important;
@@ -21,7 +20,6 @@
   }
 }
 
-/* Card content */
 .card-company {
   font-size: 24px;
   font-weight: 500;
@@ -52,7 +50,6 @@
   margin-bottom: 6px;
 }
 
-/* Tools pills */
 .tools-list {
   display: flex;
   flex-wrap: wrap;
@@ -86,8 +83,6 @@
 .tools-toggle:hover {
   opacity: 0.8;
 }
-
-/* ====== Responsive ====== */
 
 @media (min-width: 1920px) {
   .card-company {
