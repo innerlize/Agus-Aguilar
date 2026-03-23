@@ -9,7 +9,17 @@ const works = [
 			'Contributed to architecture decisions and mentored developers on frontend best practices.',
 			'Built reusable components to improve team productivity and consistency.'
 		],
-		tools: ['React.js', 'Next.js', 'TypeScript', 'Node.js', 'PostgreSQL']
+		tools: [
+			'React.js',
+			'Next.js',
+			'TypeScript',
+			'Node.js',
+			'Express.js',
+			'MongoDB',
+			'Azure',
+			'AWS',
+			'Mongoose'
+		]
 	},
 	{
 		company: 'SaiLO',
@@ -32,7 +42,30 @@ const works = [
 			'Performed testing and API debugging, maintaining code quality.',
 			'Collaborated in agile teams, participating in planning, stand-ups, and retrospectives.'
 		],
-		tools: ['React.js', 'Node.js', 'Docker', 'AWS', 'SQL', 'NoSQL']
+		tools: [
+			'React.js',
+			'Next.js',
+			'Node.js',
+			'Epress.js',
+			'Docker',
+			'AWS',
+			'SQLite',
+			'MySQL',
+			'MongoDB',
+			'MariaDB',
+			'Tailwind CSS',
+			'Git',
+			'Figma',
+			'GitHub Actions',
+			'Jest',
+			'Cypress',
+			'Swagger',
+			'Postman',
+			'Supertest',
+			'Sequelize',
+			'TypeORM',
+			'Mongoose'
+		]
 	},
 	{
 		company: 'Freelance Software Developer',
