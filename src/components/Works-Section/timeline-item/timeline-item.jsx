@@ -24,9 +24,11 @@ const TimelineItem = ({ work }) => {
 		setHasOverflow(el.scrollHeight > twoRowsHeight + 1);
 
 		const pills = el.querySelectorAll('.tool-pill');
+		const containerTop = el.getBoundingClientRect().top;
 		let hidden = 0;
 		pills.forEach(p => {
-			if (p.offsetTop + p.offsetHeight > twoRowsHeight) {
+			const pillTop = p.getBoundingClientRect().top - containerTop;
+			if (pillTop + p.offsetHeight > twoRowsHeight) {
 				hidden++;
 			}
 		});
