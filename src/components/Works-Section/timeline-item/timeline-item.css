@@ -54,6 +54,17 @@
   letter-spacing: 1px;
 }
 
+.tools-toggle {
+  background: none;
+  border: none;
+  color: var(--color-pri);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0 0;
+  letter-spacing: 1px;
+}
+
 /* ====== Responsive ====== */
 
 @media (min-width: 1920px) {
