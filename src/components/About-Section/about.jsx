@@ -8,7 +8,7 @@ function About() {
 			<h2>About Me</h2>
 
 			<p>
-				Alan is a programmer, musician and minimalist graphic designer based in
+				Agus is a programmer, musician and minimalist graphic designer based in
 				Argentina.
 				<br />
 				<br />
