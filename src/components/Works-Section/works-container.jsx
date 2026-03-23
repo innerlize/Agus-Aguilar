@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import worksDB from '../../databases/worksDB.js';
-import Work from './work/work.jsx';
-import PersonalProjects from './personal-projects/personal-projects.jsx';
+import TimelineItem from './timeline-item/timeline-item.jsx';
+// import PersonalProjects from './personal-projects/personal-projects.jsx';
 import './works-container.css';
 
-const works = () => {
+const Works = () => {
+	const timelineRef = useRef(null);
+
+	const { scrollYProgress } = useScroll({
+		target: timelineRef,
+		offset: ['start 80%', 'end 50%']
+	});
+
+	const scaleY = useSpring(scrollYProgress, {
+		stiffness: 100,
+		damping: 30,
+		restDelta: 0.001
+	});
+
 	return (
 		<section id='works'>
-			<div className='container works-container'>
+			<div className='works-container'>
 				<h2 className='work-txt'>Work Experience</h2>
 
-				{worksDB.map(work => {
-					return <Work key={work.name} workInfo={work} />;
-				})}
+				<div className='timeline' ref={timelineRef}>
+					<motion.div className='timeline-line' style={{ scaleY }} />
+					{worksDB.map((work, i) => (
+						<TimelineItem key={work.company} work={work} index={i} />
+					))}
+				</div>
 			</div>
-
-			<PersonalProjects />
 		</section>
 	);
 };
 
-export default works;
+export default Works;
