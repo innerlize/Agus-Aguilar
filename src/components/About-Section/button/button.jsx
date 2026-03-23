@@ -5,7 +5,7 @@ function Buttons() {
 	return (
 		<div className='container button-container'>
 			<a
-				href='https://1drv.ms/f/c/1b77b9d4e409b29b/EgAIca6nu8ZHtDS9C0TU7EMBEZ4YDSQQHBwRR6mVIXKXjQ?e=X0iYkB'
+				href='https://drive.google.com/drive/folders/1jszepNC9_4XpDd689gwKLDVRXHPVBdNb?usp=sharing'
 				rel='noreferrer'
 				className='btn pri'
 				target='_blank'>
