@@ -7,6 +7,20 @@
   color: var(--color-pri) !important;
 }
 
+@media (max-width: 1169px) {
+  .vertical-timeline-element-content {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .vertical-timeline-element-content .vertical-timeline-element-date {
+    display: block !important;
+    float: none !important;
+    order: -1 !important;
+    margin-bottom: 12px !important;
+  }
+}
+
 /* Card content */
 .card-company {
   font-size: 24px;
@@ -45,6 +59,10 @@
   gap: 8px;
 }
 
+.tools-extra {
+  margin-top: 8px;
+}
+
 .tool-pill {
   background: var(--color-sec-light);
   padding: 5px 14px;
@@ -61,8 +79,12 @@
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  padding: 8px 0 0;
+  padding: 12px;
   letter-spacing: 1px;
+}
+
+.tools-toggle:hover {
+  opacity: 0.8;
 }
 
 /* ====== Responsive ====== */

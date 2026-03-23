@@ -1,39 +1,50 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 import './timeline-item.css';
 
 const GAP = 8;
+const MAX_ROWS = 2;
 
 const TimelineItem = ({ work }) => {
 	const [expanded, setExpanded] = useState(false);
-	const [hasOverflow, setHasOverflow] = useState(false);
-	const [collapsedHeight, setCollapsedHeight] = useState(null);
-	const [hiddenCount, setHiddenCount] = useState(0);
-	const toolsRef = useRef(null);
-	const pillRef = useRef(null);
+	const [splitIndex, setSplitIndex] = useState(work.tools.length);
+	const visibleRef = useRef(null);
 
-	useEffect(() => {
-		const el = toolsRef.current;
-		const pill = pillRef.current;
-		if (!el || !pill) return;
-
-		const pillHeight = pill.offsetHeight;
-		const twoRowsHeight = pillHeight * 2 + GAP;
-
-		setCollapsedHeight(twoRowsHeight);
-		setHasOverflow(el.scrollHeight > twoRowsHeight + 1);
+	const measure = useCallback(() => {
+		const el = visibleRef.current;
+		if (!el) return;
 
 		const pills = el.querySelectorAll('.tool-pill');
+		if (pills.length === 0) return;
+
+		const pillHeight = pills[0].offsetHeight;
+		const maxHeight = pillHeight * MAX_ROWS + GAP * (MAX_ROWS - 1);
 		const containerTop = el.getBoundingClientRect().top;
-		let hidden = 0;
-		pills.forEach(p => {
-			const pillTop = p.getBoundingClientRect().top - containerTop;
-			if (pillTop + p.offsetHeight > twoRowsHeight) {
-				hidden++;
+
+		let idx = pills.length;
+		for (let i = 0; i < pills.length; i++) {
+			const pillTop = pills[i].getBoundingClientRect().top - containerTop;
+			if (pillTop + pillHeight > maxHeight + 1) {
+				idx = i;
+				break;
 			}
-		});
-		setHiddenCount(hidden);
+		}
+		setSplitIndex(idx);
 	}, [work.tools]);
+
+	useEffect(() => {
+		setSplitIndex(work.tools.length);
+	}, [work.tools]);
+
+	useEffect(() => {
+		if (splitIndex === work.tools.length) {
+			requestAnimationFrame(measure);
+		}
+	}, [splitIndex, work.tools.length, measure]);
+
+	const visibleTools = work.tools.slice(0, splitIndex);
+	const hiddenTools = work.tools.slice(splitIndex);
+	const hasMore = hiddenTools.length > 0;
 
 	return (
 		<VerticalTimelineElement
@@ -61,27 +72,23 @@ const TimelineItem = ({ work }) => {
 				))}
 			</ul>
 
-			<div
-				ref={toolsRef}
-				className='tools-list'
-				style={
-					hasOverflow && !expanded && collapsedHeight
-						? { maxHeight: collapsedHeight, overflow: 'hidden' }
-						: undefined
-				}>
-				{work.tools.map((tool, i) => (
-					<span
-						key={tool}
-						className='tool-pill'
-						ref={i === 0 ? pillRef : undefined}>
-						{tool}
-					</span>
+			<div ref={visibleRef} className='tools-list'>
+				{visibleTools.map(tool => (
+					<span key={tool} className='tool-pill'>{tool}</span>
 				))}
 			</div>
 
-			{hasOverflow && (
+			{hasMore && expanded && (
+				<div className='tools-list tools-extra'>
+					{hiddenTools.map(tool => (
+						<span key={tool} className='tool-pill'>{tool}</span>
+					))}
+				</div>
+			)}
+
+			{hasMore && (
 				<button className='tools-toggle' onClick={() => setExpanded(!expanded)}>
-					{expanded ? 'Show less' : `+${hiddenCount} more`}
+					{expanded ? 'Show less ▴' : `+${hiddenTools.length} more ▾`}
 				</button>
 			)}
 		</VerticalTimelineElement>
