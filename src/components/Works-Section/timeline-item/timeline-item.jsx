@@ -13,7 +13,7 @@ const TimelineItem = ({ work }) => {
 				boxShadow: 'none',
 				padding: '25px 30px'
 			}}
-			contentArrowStyle={{ borderRight: '7px solid rgba(255, 255, 255, 0.05)' }}
+			contentArrowStyle={{ display: 'none' }}
 			date={work.period}
 			iconStyle={{
 				background: 'rgb(10, 10, 10)',
